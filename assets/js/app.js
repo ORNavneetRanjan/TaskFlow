@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  document.getElementById("username").textContent = user.name;
+  document.getElementById("username").textContent =
+    "Hi, " + user.name.split(" ")[0];
   document.getElementById(
     "avatar"
   ).src = `https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${encodeURIComponent(
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       completed: `<button onclick="moveTask('completed','todo',${idx})">Move to Todo</button>
                   <button onclick="moveTask('completed','archived',${idx})">&#128465; Archive</button>`,
       archived: `<button onclick="moveTask('archived','todo',${idx})">Move to Todo</button>
-                <button onclick="moveTask('archived','completed',${idx})">Move to Completed</button>`,
+                 <button onclick="moveTask('archived','completed',${idx})">Move to Completed</button>`,
     };
     return btns[stage];
   };
@@ -59,8 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
   taskForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const taskText = newTaskInput.value.trim();
-    if (!taskText) return;
+    if (!taskText) {
+      showToast("Cannot add empty Task", "Please enter a valid text.");
+      return;
+    }
     tasks.todo.push({ text: taskText, timestamp: formatTimestamp() });
+    showToast(
+      "Added Task suceesfully",
+      "Task " + "'" + taskText + "' has been added."
+    );
     newTaskInput.value = "";
     saveTasks();
   });
@@ -71,6 +79,13 @@ document.addEventListener("DOMContentLoaded", () => {
     tasks[to].push(task);
     tasks[from].splice(idx, 1);
     saveTasks();
+
+    const actionMap = {
+      todo: "Todo",
+      completed: "Completed",
+      archived: "Archived",
+    };
+    showToast("Task Updated", `Task moved to ${actionMap[to]}.`);
   };
 
   const saveTasks = () => {
@@ -109,5 +124,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   } else {
     renderTasks();
+  }
+
+  // Toast function
+  function showToast(title, message) {
+    const toastContainer = document.getElementById("toast-container");
+    if (!toastContainer) return;
+
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.innerHTML = `<strong>${title}</strong><span>${message}</span>`;
+    toastContainer.appendChild(toast);
+
+    setTimeout(() => {
+      toast.remove();
+    }, 3000);
   }
 });
