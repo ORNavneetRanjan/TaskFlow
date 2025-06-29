@@ -7,17 +7,46 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>Welcome to TaskFlow</h1>
+    <div class="wrapper">
+      <div class="header">
+        <img
+          class="icon"
+          src="https://as2.ftcdn.net/v2/jpg/11/81/06/99/1000_F_1181069933_MBfGhcVpOOADVOKDVi7eXdAmT6kujdgu.jpg"
+          alt="Shield Icon"
+        />
+        <h1>TaskFlow</h1>
+        <h2 class="subtitle">Your Personal Productivity Companion</h2>
+        <p class="age-note">🔒 Age verification required for access</p>
+      </div>
 
-      <form id="registerForm">
-        <input type="text" id="name" placeholder="Enter your name" required />
-        <p id="error" class="error" name="name"></p>
-        <input type="date" id="dob" required />
-        <p id="error" class="error" name="dob"></p>
-        <button type="submit">Continue</button>
-      </form>
+      <div class="container">
+        <form id="registerForm">
+          <h2>Verify Your Identity</h2>
+
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            required
+          />
+          <p id="error-name" class="error"></p>
+
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" required />
+          <p id="error-dob" class="error"></p>
+
+          <button type="submit">&#x2713; Verify & Continue</button>
+        </form>
+      </div>
+
+      <footer>
+        By continuing, you confirm that you are over 10 years old and agree to
+        our
+        <a href="#">terms of service</a>.
+      </footer>
     </div>
+
     <div id="locale-placeholder" data-locale="guj" hidden></div>
     <script src="assets/js/utils.js"></script>
     <script src="assets/js/index.js"></script>
