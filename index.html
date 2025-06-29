@@ -3,13 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login page</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <script src="./assets/js/index.js"></script>
+    <title>TaskFlow - Register</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <div>
-      <h1>Hello world</h1>
+    <div class="container">
+      <h1>Welcome to TaskFlow</h1>
+
+      <form id="registerForm">
+        <input type="text" id="name" placeholder="Enter your name" required />
+        <p id="error" class="error" name="name"></p>
+        <input type="date" id="dob" required />
+        <p id="error" class="error" name="dob"></p>
+        <button type="submit">Continue</button>
+      </form>
     </div>
+    <div id="locale-placeholder" data-locale="guj" hidden></div>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/index.js"></script>
   </body>
 </html>
