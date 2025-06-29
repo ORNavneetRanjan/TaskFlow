@@ -30,23 +30,26 @@ document.addEventListener("DOMContentLoaded", () => {
         card.className = "task-card";
         card.innerHTML = `
           <p>${task.text}</p>
-          <small>${task.timestamp}</small>
+          <small>Last modified at:<br/>${task.timestamp}</small>
           <div class="actions">
             ${getButtons(stage, idx)}
           </div>
         `;
         container.appendChild(card);
       });
+
+      // Update tab counters
+      document.getElementById(`count-${stage}`).textContent =
+        tasks[stage].length;
     });
   };
 
   const getButtons = (stage, idx) => {
-    const timestamp = formatTimestamp();
     const btns = {
-      todo: `<button onclick="moveTask('todo','completed',${idx})">Mark as Completed</button>
-             <button onclick="moveTask('todo','archived',${idx})">Archive</button>`,
+      todo: `<button onclick="moveTask('todo','completed',${idx})">Mark it as completed</button>
+             <button onclick="moveTask('todo','archived',${idx})">&#128465; Archive</button>`,
       completed: `<button onclick="moveTask('completed','todo',${idx})">Move to Todo</button>
-                  <button onclick="moveTask('completed','archived',${idx})">Archive</button>`,
+                  <button onclick="moveTask('completed','archived',${idx})">&#128465; Archive</button>`,
       archived: `<button onclick="moveTask('archived','todo',${idx})">Move to Todo</button>
                 <button onclick="moveTask('archived','completed',${idx})">Move to Completed</button>`,
     };
@@ -78,6 +81,19 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("signout").addEventListener("click", () => {
     localStorage.clear();
     window.location.href = "index.html";
+  });
+
+  document.querySelectorAll(".tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      document
+        .querySelectorAll(".tab")
+        .forEach((t) => t.classList.remove("active"));
+      document
+        .querySelectorAll(".task-section")
+        .forEach((s) => s.classList.remove("active"));
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.tab).classList.add("active");
+    });
   });
 
   if (!localStorage.getItem("initialized")) {

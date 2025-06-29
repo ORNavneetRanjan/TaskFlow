@@ -8,36 +8,52 @@
   </head>
   <body>
     <header>
-      <h2 id="username"></h2>
-      <img id="avatar" src="" alt="User Avatar" />
-      <button id="signout">Sign Out</button>
+      <h1>TaskFlow</h1>
+      <div class="user-info">
+        <span id="username"></span>
+        <img id="avatar" alt="User Avatar" />
+        <button id="signout">
+          <img
+            id="signimage"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6P8kq1orWBk7ouVo6ig4I6ZgxBXAD1vUYig&s"
+          />
+          SignOut
+        </button>
+      </div>
     </header>
 
     <main>
-      <section id="todo">
-        <h3>Todo</h3>
-        <div class="task-container" id="todo-tasks"></div>
-      </section>
-
-      <section id="completed">
-        <h3>Completed</h3>
-        <div class="task-container" id="completed-tasks"></div>
-      </section>
-
-      <section id="archived">
-        <h3>Archived</h3>
-        <div class="task-container" id="archived-tasks"></div>
-      </section>
+      <div class="tabs">
+        <button class="tab active" data-tab="todo">
+          Todo (<span id="count-todo">0</span>)
+        </button>
+        <button class="tab" data-tab="completed">
+          Completed (<span id="count-completed">0</span>)
+        </button>
+        <button class="tab" data-tab="archived">
+          Archived (<span id="count-archived">0</span>)
+        </button>
+      </div>
 
       <form id="taskForm">
         <input
           type="text"
           id="new-task"
-          placeholder="Enter a new task"
+          placeholder="Add your task (text-box)"
           required
         />
-        <button type="submit">Add Task</button>
+        <button type="submit">Submit</button>
       </form>
+
+      <section id="todo" class="task-section active">
+        <div class="task-container" id="todo-tasks"></div>
+      </section>
+      <section id="completed" class="task-section">
+        <div class="task-container" id="completed-tasks"></div>
+      </section>
+      <section id="archived" class="task-section">
+        <div class="task-container" id="archived-tasks"></div>
+      </section>
     </main>
 
     <script src="assets/js/utils.js"></script>
