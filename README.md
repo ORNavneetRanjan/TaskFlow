@@ -49,12 +49,6 @@
 
 ---
 
-## 🖼 Screenshots
-
-> (Add screenshots or a screen recording here if possible to visually demonstrate your UI)
-
----
-
 ## 📂 Folder Structure
 
 project-root/
