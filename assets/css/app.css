@@ -19,6 +19,8 @@ header {
   align-items: center;
   padding: 10px 50px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 header h1 {
@@ -30,6 +32,7 @@ header h1 {
   align-items: center;
   gap: 1rem;
   font-size: large;
+  flex-wrap: wrap;
 }
 
 #avatar {
@@ -57,9 +60,11 @@ header h1 {
   max-height: 25px;
   object-fit: contain;
 }
+
 main {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 1rem;
   isolation: isolate;
 }
 
@@ -70,6 +75,8 @@ main {
   padding: 0.35rem;
   border-radius: 8px;
   margin: 1rem 0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .tab {
@@ -83,6 +90,7 @@ main {
   border-radius: 8px;
   cursor: pointer;
   font-size: large;
+  min-width: 100px;
 }
 
 .tab.active {
@@ -92,6 +100,7 @@ main {
 
 form {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   background: rgba(255, 255, 255, 0.05);
   padding: 1rem;
@@ -99,13 +108,14 @@ form {
 }
 
 form input {
-  flex: 1;
+  flex: 1 1 250px;
   padding: 10px;
   border: none;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   font-size: large;
+  min-width: 200px;
 }
 
 form input::placeholder {
@@ -121,6 +131,7 @@ form button {
   border-radius: 6px;
   cursor: pointer;
   font-size: large;
+  flex-shrink: 0;
 }
 
 .task-section {
@@ -153,6 +164,7 @@ form button {
 .actions {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .actions button {
@@ -217,5 +229,83 @@ form button {
   100% {
     opacity: 0;
     transform: translateY(10px);
+  }
+}
+
+/* ========== Responsive Design ========== */
+
+/* Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  header {
+    padding: 10px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-info {
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tab {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  form {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  form button {
+    width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
+
+/* Tablet (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  header {
+    padding: 10px 30px;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    font-size: 1rem;
+  }
+
+  .actions {
+    gap: 0.7rem;
+  }
+}
+
+/* Desktop (≥ 769px) */
+@media (min-width: 769px) {
+  .tabs {
+    gap: 1rem;
+  }
+
+  .tab {
+    font-size: 1.1rem;
+  }
+
+  form button {
+    min-width: 120px;
+  }
+
+  .actions {
+    justify-content: flex-start;
   }
 }

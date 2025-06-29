@@ -19,7 +19,7 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   padding: 1rem;
   text-align: center;
 }
@@ -122,4 +122,57 @@ footer {
 footer a {
   color: #a149ff;
   text-decoration: none;
+}
+
+/* ===================== Responsive Design ===================== */
+
+/* Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .header .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .container {
+    padding: 1.2rem;
+    margin-top: 1rem;
+  }
+
+  form h2 {
+    font-size: 1.1rem;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablet (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 1.5rem 2rem;
+  }
+
+  form h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Desktop (769px and up) */
+@media (min-width: 769px) {
+  .container {
+    padding: 2.5rem 3rem;
+  }
+
+  form h2 {
+    font-size: 1.4rem;
+  }
 }
